@@ -1,22 +1,35 @@
-import React from "react";
-import { Text } from "ink";
-const Counter = () => {
-  console.info("counter");
+import React, { useState } from "react";
+import { Text, Box, useApp } from "ink";
+import { Views } from "../types/Views";
+import { MainView } from "../views/Main";
+import { DetailView } from "../views/Detail";
+const TUIRouter = (): JSX.Element => {
+  const { exit } = useApp();
+  const [currentView, setCurrentView] = useState<Views>("MAIN");
+
+  function body(): JSX.Element {
+    switch (currentView) {
+      case "MAIN":
+        return (
+          <MainView exitHandler={exit} setCurrentViewHandler={setCurrentView} />
+        );
+      case "DETAIL":
+        return <DetailView setCurrentViewHandler={setCurrentView} />;
+      default:
+        return (
+          <>
+            <Text>404</Text>
+          </>
+        );
+    }
+  }
 
   return (
-    <>
-      <Text color="green">I am green</Text>
-      <Text color="black" backgroundColor="white">
-        I am black on white
-      </Text>
-      <Text color="#ffffff">I am white</Text>
-      <Text bold>I am bold</Text>
-      <Text italic>I am italic</Text>
-      <Text underline>I am underline</Text>
-      <Text strikethrough>I am strikethrough</Text>
-      <Text inverse>I am inversed</Text>
-    </>
+    <Box flexDirection="column">
+      <Text>Use arrow keys to move the face. Press “q” to exit.</Text>
+      {body()}
+    </Box>
   );
 };
 
-export default Counter;
+export default TUIRouter;
