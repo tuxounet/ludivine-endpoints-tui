@@ -32,7 +32,7 @@
     "url": "https://github.com/tuxounet/ludivine-endpoints-tui/issues"
   },
   "dependencies": {
-    "@ludivine/runtime": "file:../ludivine-runtime",
+    "@ludivine/runtime": "^0.0.10",
     "ink": "^3.2.0",
     "react": "^17.0.2"
   },
