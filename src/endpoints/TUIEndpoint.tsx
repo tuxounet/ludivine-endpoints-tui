@@ -11,7 +11,14 @@ export class TUIEndpoint
   }
 
   @logging.logMethod()
-  async renderUI(): Promise<void> {
+  async open(): Promise<void> {
+    const server = http.createServer((request, response) => {
+      console.log(request);
+      response.end();
+    });
+
+    server.listen(32027, () => {});
+
     this.log.info("rendered");
     const uiInstance = render(<TUIRouter />);
     this.log.info("rendered");
@@ -19,16 +26,5 @@ export class TUIEndpoint
   }
 
   @logging.logMethod()
-  async listenAPI(): Promise<void> {
-    await new Promise<void>((resolve, reject) => {
-      const server = http.createServer((request, response) => {
-        console.log(request);
-        response.end();
-      });
-
-      server.listen(32027, () => {
-        resolve();
-      });
-    });
-  }
+  async close(): Promise<void> {}
 }
