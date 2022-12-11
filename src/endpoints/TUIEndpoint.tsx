@@ -1,7 +1,8 @@
 import { bases, endpoints, logging } from "@ludivine/runtime";
 import { render } from "ink";
 import TUIRouter from "./components/TUIRouter";
-import http from "http";
+import { TUIBackend } from "./TUIBackend";
+
 export class TUIEndpoint
   extends bases.KernelElement
   implements endpoints.IEndpoint
@@ -12,17 +13,11 @@ export class TUIEndpoint
 
   @logging.logMethod()
   async open(): Promise<void> {
-    const server = http.createServer((request, response) => {
-      console.log(request);
-      response.end();
-    });
-
-    server.listen(32027, () => {});
-
-    this.log.info("rendered");
-    const uiInstance = render(<TUIRouter />);
-    this.log.info("rendered");
+    const backend = new TUIBackend(this);
+    await backend.initialize();
+    const uiInstance = render(<TUIRouter backend={backend} />);
     await uiInstance.waitUntilExit();
+    await backend.shutdown();
   }
 
   @logging.logMethod()

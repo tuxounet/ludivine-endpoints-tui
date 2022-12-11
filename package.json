@@ -1,6 +1,6 @@
 {
   "name": "@ludivine/endpoints-tui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,6 +34,7 @@
   "dependencies": {
     "@ludivine/runtime": "^0.0.11",
     "ink": "^3.2.0",
+    "ink-text-input": "^4.0.3",
     "react": "^17.0.2"
   },
   "homepage": "https://github.com/tuxounet/ludivine-endpoints-tui#readme",
