@@ -1,9 +1,9 @@
 import React from "react";
 import { Box } from "ink";
-import { TUIBackend } from "../../TUIBackend";
+import { TUIBackend } from "../TUIBackend";
 
-import { EventsConmponent } from "./components/EventsConmponent";
-import { InputComponent } from "./components/InputComponent";
+import { EventsConmponent } from "./EventsConmponent";
+import { InputComponent } from "./InputComponent";
 interface MainViewProps {
   exitHandler: () => void;
   backend: TUIBackend;

@@ -1,8 +1,8 @@
 import React from "react";
 import { useApp } from "ink";
 
-import { MainView } from "../views/Main";
-import { TUIBackend } from "../TUIBackend";
+import { MainView } from "../views/Main/MainView";
+import { TUIBackend } from "../views/TUIBackend";
 
 interface TUIRouterProps {
   backend: TUIBackend;
@@ -11,7 +11,12 @@ interface TUIRouterProps {
 const TUIRouter = (props: TUIRouterProps): JSX.Element => {
   const { exit } = useApp();
 
-  return <MainView exitHandler={exit} backend={props.backend} />;
+  return (
+    <MainView
+      exitHandler={exit}
+      backend={props.backend}
+    />
+  );
 };
 
 export default TUIRouter;

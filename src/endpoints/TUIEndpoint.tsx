@@ -1,7 +1,7 @@
 import { bases, endpoints, logging } from "@ludivine/runtime";
 import { render } from "ink";
 import TUIRouter from "./components/TUIRouter";
-import { TUIBackend } from "./TUIBackend";
+import { TUIBackend } from "./views/TUIBackend";
 
 export class TUIEndpoint
   extends bases.KernelElement
